@@ -1,0 +1,18 @@
+
+
+<h1>Add Tareas</h1>
+<div class="Textos">
+
+        <textarea #tareaName placeholder="Name" class="Nombre"></textarea>
+
+        <select #tareaType class="Tipo">
+            <option *ngFor="let tipo of tipos; let i=index" [value]=i>{{tipo}}<img/></option>
+        </select>
+</div>
+<div class="descripcionContainer"> 
+    <textarea #tareaDescripcion placeholder="Descripcion" class="descripcion"></textarea>
+
+</div>
+<div class="Boton">
+    <button (click)="addTarea(tareaName.value,tareaType.value)" class="botonVerde">Add Tarea</button>
+</div>

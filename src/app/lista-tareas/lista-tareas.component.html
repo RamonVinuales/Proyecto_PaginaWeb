@@ -1,0 +1,34 @@
+
+
+<div class="Centrado">
+    <div class="itemDeCentradoEmpty">
+    </div>
+    <div class="itemDeCentrado">
+        <h1>Lista de Tareas</h1>
+        <div class="overflow">
+            <ul class="estiloUl">
+                <li class="estiloListaCelda" *ngFor="let tarea of tareas; let i=index">
+                    <div class="divLi">
+                        <div class="textoli">
+                            {{tarea.name}} <br>Type:{{tipoTareas[tarea.type]}} <br>
+                            <button (click)="deleteTarea(i)" class="botonRojo">Eliminar</button>
+                        </div>
+
+                        <div>
+                            <img [src]="iconos[tarea.type]" alt="Icono de tarea"  class="imagen">
+                        </div>
+                    </div>
+                
+                </li>	
+            </ul>
+        </div>	
+    </div>
+    <div class="itemDeCentradoEmpty">
+    </div>
+  </div>
+
+
+
+
+            
+   
