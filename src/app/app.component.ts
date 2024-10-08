@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
-import { TareasAddComponent } from "./tareas-add/tareas-add.component";
+import { ListaTareasComponent } from './components/lista-tareas/lista-tareas.component';
+import { TareasAddComponent } from "./components/tareas-add/tareas-add.component";
 
 
 

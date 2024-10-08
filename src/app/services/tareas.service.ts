@@ -6,33 +6,29 @@ import { Injectable } from '@angular/core';
 export class TareasService {
 
   private storageKey = "tareas" ;
-  private storageKeyitems = "items" ; 
+  private storageKeyTypes = "Types" ; 
   private storageKeyIcons ="icons"
   constructor(){
 
     if(this.isLocalStoratgeAvaible()){
       const savedTareas = localStorage.getItem(this.storageKey)
-      const savedTypes = localStorage.getItem(this.storageKeyitems)
+      const savedTypes = localStorage.getItem(this.storageKeyTypes)
       const savedIcons = localStorage.getItem(this.storageKeyIcons)
       if(savedTareas){
         this.tareas = JSON.parse(savedTareas)
       }
       if(savedTypes){
-        this.tareas = JSON.parse(savedTypes)
+        this.tipoTareas = JSON.parse(savedTypes)
       }
       if(savedIcons){
-        this.tareas = JSON.parse(savedIcons)
+        this.iconos = JSON.parse(savedIcons)
       }
     }
   }
   tareas:{name:string,type:number}[]=[];
-  iconos:string[]=[
-    "https://cdn-icons-png.freepik.com/256/995/995053.png?semt=ais_hybrid",
-    "https://cdn-icons-png.flaticon.com/512/107/107831.png",
-    "https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
-  ];
-  tipoTareas:string[] =["Limpieza","Compras","Personales"];
-
+  iconos:string[]=[];
+  tipoTareas:string[] =[];
+    
 
     getTareas(){
       return this.tareas;
@@ -46,21 +42,38 @@ export class TareasService {
     }
     addTipo(tipo:string, icono:string){
       this.tipoTareas.push(tipo);
-      this.iconos.push(icono[1]);
-      this.saveToLocalStoratge();
+      this.iconos.push(icono);
+      this.saveToLocalStoratgeIconos();
+      this.saveToLocalStoratgeTipos();
+    }
+    deleteTipo(index:number){
+      this.tipoTareas.splice(index,1);
+      this.iconos.splice(index,1)
+      this.saveToLocalStoratgeIconos();
+      this.saveToLocalStoratgeTipos();
     }
     addTarea(tarea :{name:string, type:number}){
       this.tareas.push(tarea);
-      this.saveToLocalStoratge();
+      this.saveToLocalStoratgeTareas();
+    }
+    modifyTarea(index:number, newTarea :{name:string, type:number}){
+      this.tareas[index]= newTarea
     }
 
     deleteTarea(index:number){
       this.tareas.splice(index,1);
-      this.saveToLocalStoratge();
+      this.saveToLocalStoratgeTareas();
     }
-    private saveToLocalStoratge(){
-      localStorage.setItem(this.storageKey, JSON.stringify(this.tareas));
+    private saveToLocalStoratgeTareas(){
+      localStorage.setItem(this.storageKey, JSON.stringify(this.tareas));;  
     }
+    private saveToLocalStoratgeIconos(){
+      localStorage.setItem(this.storageKeyIcons, JSON.stringify(this.iconos));
+    }
+    private saveToLocalStoratgeTipos(){
+      localStorage.setItem(this.storageKeyTypes, JSON.stringify(this.tipoTareas));
+    }
+
     private isLocalStoratgeAvaible():boolean{
       try {
         return typeof window !== 'undefined' && typeof localStorage !== 'undefined';

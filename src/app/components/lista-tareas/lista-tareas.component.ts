@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { TareasService } from '../tareas.service';
+import { TareasService } from '../../services/tareas.service';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -14,13 +14,9 @@ export class ListaTareasComponent implements OnInit{
 tareas: {name: string,type: number} []=[];
 
 constructor(private tareasService : TareasService){}
-tipoTareas:string[] =["Limpieza","Compras","Personales"];
-iconos:string[]=[
-  "https://cdn-icons-png.freepik.com/256/995/995053.png?semt=ais_hybrid",
-  "https://cdn-icons-png.flaticon.com/512/107/107831.png",
-  "https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
-];
-
+tipoTareas:string[] =[];
+iconos:string[]=[];
+indexmdf:number=-1;
   ngOnInit(): void {
     this.tareas = this.tareasService.getTareas();
     this.iconos = this.tareasService.getIconos();
@@ -30,7 +26,14 @@ iconos:string[]=[
   deleteTarea(index:number){
     this.tareasService.deleteTarea(index);
   }
+  activateModal(index:number){
+    this.indexmdf=index;
+
+  }
+
+  modifyTarea(index:number){
 
 
+  }
 
 }

@@ -1,0 +1,53 @@
+.Textos{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 5px;
+    }
+    .Nombre{
+        width:35%;
+        margin-left: 5%;
+        font-size: 16px;
+        resize: none;
+    }
+    .descripcion{
+        width:50%;
+        margin-top: 30px;
+        font-size: 16px;
+        resize: none;
+        height: 400px;
+    }
+    .descripcionContainer{
+        display:flex;
+        justify-content: center;
+    }
+    .Flextareas{
+        display: flex;
+       flex-direction: column;
+       width: 48%;
+    }
+    .Tipo{
+        width:35%;
+        margin-right: 5%;
+        resize: none;
+    
+    }
+    .Boton{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 15px;
+    }
+    .botonVerde{
+        background-color:green;
+        font-size:25px;
+        cursor: pointer;
+        border-radius: 60px;
+    }
+    .botonVerde:hover{
+        background-color:#007bff;
+        color:white;  
+    }
+    h1{
+        text-align: center;
+    }

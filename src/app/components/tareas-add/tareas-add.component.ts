@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { TareasService } from '../tareas.service';
+import { Component, OnInit } from '@angular/core';
+import { TareasService } from '../../services/tareas.service';
 import { CommonModule } from '@angular/common';
 import { __values } from 'tslib';
 @Component({
@@ -9,8 +9,16 @@ import { __values } from 'tslib';
   templateUrl: './tareas-add.component.html',
   styleUrl: './tareas-add.component.css'
 })
-export class TareasAddComponent {
+export class TareasAddComponent implements OnInit {
   constructor(private tareaService:TareasService){}
+
+  tipos:string[] =[];
+  iconos:string[]=[];
+
+  ngOnInit(): void {
+    this.tipos= this.tareaService.getTypos();
+    this.iconos=this.tareaService.getTypos();
+  }
 
   addTarea(name:string, type:string){
     var typeNumeric:number=parseInt(type)
@@ -20,12 +28,7 @@ export class TareasAddComponent {
       console.error('El tipo no es un número válido:', type);
     }
   }
-  tipos:string[] =["Limpieza","Compras","Personales"];
-  iconos:string[]=[
-    "https://cdn-icons-png.freepik.com/256/995/995053.png?semt=ais_hybrid",
-    "https://cdn-icons-png.flaticon.com/512/107/107831.png",
-    "https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
-  ];
+  
 
 
 
