@@ -27,27 +27,9 @@
       height:100%;
     }
     
-    button{
-      padding:15px;
-      width: 15%;
-      size: 20px;
-      background-color:#e1faf9;
-      border:5px;
-      border-radius:15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    button:hover{
-    background-color: #41f0e7;
     
-    }
     html{
       height: 100%;
     }
-    h1{
-      letter-spacing: 5px; 
-      text-align:center;
     
-    }
     

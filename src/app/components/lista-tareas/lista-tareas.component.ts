@@ -31,9 +31,13 @@ indexmdf:number=-1;
 
   }
 
-  modifyTarea(index:number){
-
-
+  modifyTarea(index:number,tarea:{name:string,type:string}){
+    var typeNumeric:number=parseInt(tarea.type)
+    if(!isNaN(typeNumeric)){
+      this.tareasService.modifyTarea(index,{name:tarea.name, type:typeNumeric});
+    }else {
+      console.error('El tipo no es un número válido:');
+    }
   }
 
 }
