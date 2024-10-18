@@ -11,14 +11,12 @@
                         <div class="textoli">
                             {{tarea.name}} <br>Type:{{tipoTareas[tarea.type]}} <br>
                             <button (click)="deleteTarea(i)" class="botonRojo">Eliminar</button><br>
-                            <button onclick="document.getElementById('id01').style.display='block'">Modify</button>
+                            <button (click)="goToModify(i)" class="botonVerde">Modify</button>
                         </div>
-
                         <div>
                             <img [src]="iconos[tarea.type]" alt="Icono de tarea"  class="imagen">
                         </div>
                     </div>
-                
                 </li>	
             </ul>
         </div>	

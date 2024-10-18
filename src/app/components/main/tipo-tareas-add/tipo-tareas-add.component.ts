@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { TareasService } from '../../../app/services/tareas.service';
+import { TareasService } from '../../../services/tareas.service';
 import { CommonModule } from '@angular/common';
 import { __values } from 'tslib';
 

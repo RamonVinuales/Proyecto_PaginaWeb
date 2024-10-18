@@ -1,0 +1,17 @@
+
+<h1>Modify Tareas</h1>
+<div class="Textos">
+
+        <textarea #tareaName placeholder="Name" class="Nombre" [value]="tareas[indexmdf].name"></textarea>
+
+        <select #tareaType class="Tipo" >
+            <option  *ngFor="let tipo of tipoTareas; let i=index;" [value]=i>{{tipo}}</option>
+        </select>
+</div>
+<div class="descripcionContainer"> 
+    <textarea #tareaDescripcion placeholder="Descripcion" class="descripcion"></textarea>
+
+</div>
+<div class="Boton">
+    <button (click)="modifyTarea({name:tareaName.value,type:tareaType.value})" class="botonVerde">Modify Tarea</button>
+</div>

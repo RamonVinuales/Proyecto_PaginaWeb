@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TareasService } from '../../services/tareas.service';
+import { TareasService } from '../../../services/tareas.service';
 import { CommonModule } from '@angular/common';
 import { __values } from 'tslib';
 @Component({
@@ -20,10 +20,11 @@ export class TareasAddComponent implements OnInit {
     this.iconos=this.tareaService.getTypos();
   }
 
-  addTarea(name:string, type:string){
+  addTarea(name:string, type:string, descripcion:string){
     var typeNumeric:number=parseInt(type)
     if(!isNaN(typeNumeric)){
       this.tareaService.addTarea({name, type:typeNumeric});
+      this.tareaService.addDescripcion(descripcion);
     }else {
       console.error('El tipo no es un número válido:', type);
     }
