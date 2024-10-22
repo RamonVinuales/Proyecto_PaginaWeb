@@ -35,9 +35,4 @@ modalShow:boolean=false;
     let destino:string ="/modify";
     this.router.navigate([destino]);
   }
-
-
-
-
-    
 }

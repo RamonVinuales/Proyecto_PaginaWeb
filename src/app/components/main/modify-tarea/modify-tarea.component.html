@@ -5,12 +5,18 @@
         <textarea #tareaName placeholder="Name" class="Nombre" [value]="tareas[indexmdf].name"></textarea>
 
         <select #tareaType class="Tipo" >
-            <option  *ngFor="let tipo of tipoTareas; let i=index;" [value]=i>{{tipo}}</option>
+            <div *ngFor="let tipo of tipoTareas; let i=index;">
+                <div *ngIf="i==tareas[indexmdf].type">
+                    <option [value]=i selected>{{tipo}}</option>
+                </div>
+                <div *ngIf="i!=tareas[indexmdf].type">
+                    <option [value]=i >{{tipo}}</option>
+                </div>
+            </div>
         </select>
 </div>
 <div class="descripcionContainer"> 
     <textarea #tareaDescripcion placeholder="Descripcion" class="descripcion"></textarea>
-
 </div>
 <div class="Boton">
     <button (click)="modifyTarea({name:tareaName.value,type:tareaType.value})" class="botonVerde">Modify Tarea</button>
