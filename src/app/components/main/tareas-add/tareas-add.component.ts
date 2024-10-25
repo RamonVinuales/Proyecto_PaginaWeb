@@ -23,8 +23,7 @@ export class TareasAddComponent implements OnInit {
   addTarea(name:string, type:string, descripcion:string){
     var typeNumeric:number=parseInt(type)
     if(!isNaN(typeNumeric)){
-      this.tareaService.addTarea({name, type:typeNumeric});
-      this.tareaService.addDescripcion(descripcion);
+      this.tareaService.addTarea({name, type:typeNumeric},descripcion);
     }else {
       console.error('El tipo no es un número válido:', type);
     }

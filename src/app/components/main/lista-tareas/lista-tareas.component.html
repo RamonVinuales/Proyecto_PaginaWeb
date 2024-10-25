@@ -6,12 +6,19 @@
         <h1>Lista de Tareas</h1>
         <div class="overflow">
             <ul class="estiloUl">
-                <li class="estiloListaCelda" *ngFor="let tarea of tareas; let i=index">
+                <li (click)="goToDetalles(i)" class="estiloListaCelda" *ngFor="let tarea of tareas; let i=index">
                     <div class="divLi">
                         <div class="textoli">
-                            {{tarea.name}} <br>Type:{{tipoTareas[tarea.type]}} <br>
-                            <button (click)="deleteTarea(i)" class="botonRojo">Eliminar</button><br>
-                            <button (click)="goToModify(i)" class="botonVerde">Modify</button>
+                            <div class="texto">
+                                {{tarea.name}} <br>Type:{{tipoTareas[tarea.type]}} <br>
+                            </div>
+                            <div class="Botones2">
+                                <div class="botones">
+                                    <button (click)="deleteTarea($event,i)" class="botonRojo">Eliminar</button><br>
+                                    <button (click)="goToModify($event,i)" class="botonVerde">Modify</button>
+                                </div>
+                                <div class="Botones3"></div>
+                            </div>
                         </div>
                         <div>
                             <img [src]="iconos[tarea.type]" alt="Icono de tarea"  class="imagen">

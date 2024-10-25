@@ -35,16 +35,16 @@ export class TareasService {
   tipoTareas:string[] =[];
   descripciones:string[]=[];
   indiceAModificar:number=0;
+  detalles:number=0;
 
-    addDescripcion(descripcion:string){
-      this.descripciones.push(descripcion)
-      this.saveToLocalStoratgeDescripcion();
-    }
     getDescripcion(){
       return this.descripciones
     }
     setModify(newIndice:number){
-      this.indiceAModificar=newIndice
+      this.indiceAModificar=newIndice;
+    }
+    setDetalles(newIndice:number){
+      this.detalles=newIndice;
     }
     getModify(){
       return this.indiceAModificar;
@@ -58,6 +58,9 @@ export class TareasService {
     }
     getIconos(){
       return this.iconos;
+    }
+    getDetalles(){
+      return this.detalles;
     }
     addTipo(tipo:string, icono:string){
       this.tipoTareas.push(tipo);
@@ -81,19 +84,23 @@ export class TareasService {
       this.saveToLocalStoratgeIconos();
       this.saveToLocalStoratgeTipos();
     }
-    addTarea(tarea :{name:string, type:number}){
+    addTarea(tarea :{name:string, type:number},descripcion:string){
       this.tareas.push(tarea);
+      this.descripciones.push(descripcion);
       this.saveToLocalStoratgeTareas();
+      this.saveToLocalStoratgeDescripcion();
     }
-    modifyTarea(index:number, newTarea :{name:string, type:number}){
-      this.tareas[index]= newTarea
+    modifyTarea(index:number, newTarea :{name:string, type:number},descripcion:string){
+      this.tareas[index]= newTarea;
+      this.descripciones[index]=descripcion;
       this.saveToLocalStoratgeTareas();
-      this.saveToLocalStoratgeIconos();
+      this.saveToLocalStoratgeDescripcion();
     }
-
     deleteTarea(index:number){
       this.tareas.splice(index,1);
+      this.descripciones.splice(index,1);
       this.saveToLocalStoratgeTareas();
+      this.saveToLocalStoratgeDescripcion();
     }
     private saveToLocalStoratgeDescripcion(){
         localStorage.setItem(this.storageKey,JSON.stringify(this.descripciones))
@@ -115,5 +122,4 @@ export class TareasService {
         return false;
       }
     }
-  
 }

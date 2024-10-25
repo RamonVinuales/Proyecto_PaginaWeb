@@ -1,0 +1,84 @@
+.Textos{
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    gap:15%;
+    padding: 5px;
+}
+.Nombre{
+    width:35%;
+    margin-left: 5%;
+    font-size: 16px;
+}
+.descripcion{
+    width:50%;
+    margin-top: 30px;
+    font-size: 16px;
+    resize: none;
+    height: auto;
+}
+.descripcionContainer{
+    display:flex;
+    justify-content: center;
+}
+.estiloG{
+    display:flex;
+    flex-direction: column;
+    width:650px;
+    height: 95%;
+	margin-left: 32.5%;
+	margin-right: 32.5%;
+	margin-bottom:15px;
+	background-color: white;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+}
+.Flextareas{
+    display: flex;
+   flex-direction: column;
+   width: 48%;
+}
+.Tipo{
+    width:35%;
+    margin-right: 5%;
+    resize: none;
+    border: none;
+    background: none;
+}
+.Boton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+}
+.botonVerde{
+    background-color:green;
+    font-size:25px;
+    cursor: pointer;
+    border-radius: 60px;
+}
+.botonVerde:hover{
+    background-color:#007bff;
+    color:white;  
+}
+.ContainerTipo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+	font-size:40px;
+	text-align:center;
+	background: linear-gradient(445deg, #ade2fa, #98ddfd);
+    padding: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+}
+img{
+    margin-right: 15px;
+	margin-top: 5px;
+	height: 80px;
+	width: 80px;
+}

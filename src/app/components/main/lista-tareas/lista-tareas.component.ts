@@ -26,13 +26,20 @@ modalShow:boolean=false;
     this.descripciones=this.tareasService.getDescripcion();
   }
   
-  deleteTarea(index:number){
+  deleteTarea(event:MouseEvent,index:number){
+    event.stopPropagation();
     this.tareasService.deleteTarea(index);
   }
 
-  goToModify(index:number){
+  goToModify(event:MouseEvent,index:number){
+    event.stopPropagation();
     this.tareasService.setModify(index)
     let destino:string ="/modify";
     this.router.navigate([destino]);
+  }
+  goToDetalles(index:number){
+    this.tareasService.setDetalles(index);
+    let destino:string ="/detalles";
+    this.router.navigate([destino])
   }
 }

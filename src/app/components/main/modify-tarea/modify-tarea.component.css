@@ -1,8 +1,9 @@
-.Textos{
-    display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    padding: 5px;
+    .Textos{
+        width: 100%;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        padding: 5px;
     }
     .Nombre{
         width:35%;
@@ -21,6 +22,11 @@
         display:flex;
         justify-content: center;
     }
+    .estiloG{
+        width: 50%;
+        display:flex;
+        flex-direction: column;
+    }
     .Flextareas{
         display: flex;
        flex-direction: column;
@@ -30,7 +36,6 @@
         width:35%;
         margin-right: 5%;
         resize: none;
-    
     }
     .Boton{
         display:flex;

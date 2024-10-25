@@ -19,17 +19,19 @@ export class ModifyTareaComponent implements OnInit {
   tipoTareas:string[] =[];
   iconos:string[]=[];
   indexmdf:number=-1;
+  descripciones:string[]=[];
   ngOnInit(): void {
     this.tareas = this.tareasService.getTareas();
     this.iconos = this.tareasService.getIconos();
     this.tipoTareas = this.tareasService.getTypos();
     this.indexmdf = this.tareasService.getModify();
+    this.descripciones=this.tareasService.getDescripcion();
   }
   
-  modifyTarea(tarea:{name:string,type:string}){
+  modifyTarea(tarea:{name:string,type:string},descripcion:string){
     var typeNumeric:number=parseInt(tarea.type)
     if(!isNaN(typeNumeric)){
-      this.tareasService.modifyTarea(this.indexmdf,{name:tarea.name, type:typeNumeric});
+      this.tareasService.modifyTarea(this.indexmdf,{name:tarea.name, type:typeNumeric},descripcion);
     }else {
       console.error('El tipo no es un número válido:');
     }
