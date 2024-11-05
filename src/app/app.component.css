@@ -2,18 +2,19 @@
     
     .ColorHead{
     background-color: #ade2fa;
-    height:20%;
+    height:30%;
+    resize: none;
 
     }
-    
     .colorBody{
       background-color: #ade2fa;
-      height:77.4%;
+      height:67.4%;
+      resize: none;
     }
     footer{
       background-color: #ade2fa;  
       height:3%;
-
+      resize: none;
       margin-top: -50px;
     }
     html{

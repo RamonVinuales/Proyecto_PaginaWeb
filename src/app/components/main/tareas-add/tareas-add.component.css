@@ -15,9 +15,10 @@ padding: 5px;
     margin-top: 30px;
     font-size: 16px;
     resize: none;
-    height: 400px;
+    height: 100%;
 }
 .descripcionContainer{
+    height: 40%;
     display:flex;
     justify-content: center;
 }
@@ -36,7 +37,8 @@ padding: 5px;
     display:flex;
     align-items: center;
     justify-content: center;
-    padding-top: 15px;
+    padding-top:10%;
+    padding-bottom:1%;
 }
 .botonVerde{
 	background-color:green;
@@ -48,6 +50,22 @@ padding: 5px;
 	background-color:#007bff;
 	color:white;  
 }
+.estiloG{
+    display:flex;
+    flex-direction: column;
+    width:650px;
+    height: 95%;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+}
 h1{
-    text-align: center;
+	font-size:40px;
+	text-align:center;
+	background: linear-gradient(445deg, #ade2fa, #98ddfd);
+    padding: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
 }

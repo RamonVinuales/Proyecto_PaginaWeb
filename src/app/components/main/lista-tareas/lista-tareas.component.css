@@ -45,28 +45,40 @@
 	padding-left:25%
 }
 .botonVerde{
-	background-color:rgb(46, 201, 46);
-	font-size:20px;
-	border:0px;
+	background-color:rgb(104, 211, 104);
+	font-size:18px;
+	padding: 2px 10px;
+	border:0;
 	cursor: pointer;
     border-radius: 60px;
 }
 .botonVerde:hover{
-	background-color:#509ff5;
+	background-color:#71aff1;
 	color:white;
 }
 .textoli{
 	margin-left: 5px;
 	margin-top: 5px;
 }
+.name{
+ height: 20px;
+ margin: 0;
+ font-size: 15px;
+ overflow-x: auto;
+}
+.type{
+	height: 20px;
+	font-size: 12px;
+	margin: 0;
+}
 .botonRojo{
 	margin-top: 5px;
+	padding: 2px 5px;
+	border:0;
 	background-color:#F07167;
 	font-size:18px;
 	color:white;
-	cursor: pointer;
     border-radius: 60px;
-	border: 1px;
 	margin-bottom: 5px;
 }
 .botonRojo:hover{
@@ -138,8 +150,8 @@ width: min-content;
 .imagen{
 	margin-right: 15px;
 	margin-top: 5px;
-	height: 80%;
-	width: 80px;
+	height: 100px;
+	width: 100px;
 }
 .divLi{
 	display:flex;

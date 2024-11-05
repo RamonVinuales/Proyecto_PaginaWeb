@@ -1,9 +1,8 @@
-    .Textos{
-        width: 100%;
-        display:flex;
-        flex-direction:row;
-        justify-content: space-between;
-        padding: 5px;
+.Textos{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 5px;
     }
     .Nombre{
         width:35%;
@@ -12,20 +11,17 @@
         resize: none;
     }
     .descripcion{
+        height: 100%;
         width:50%;
         margin-top: 30px;
         font-size: 16px;
         resize: none;
-        height: 400px;
+        
     }
     .descripcionContainer{
+        height: 40%;
         display:flex;
         justify-content: center;
-    }
-    .estiloG{
-        width: 50%;
-        display:flex;
-        flex-direction: column;
     }
     .Flextareas{
         display: flex;
@@ -36,12 +32,14 @@
         width:35%;
         margin-right: 5%;
         resize: none;
+    
     }
     .Boton{
         display:flex;
         align-items: center;
         justify-content: center;
-        padding-top: 15px;
+        padding-top:10%;
+        padding-bottom:1%;
     }
     .botonVerde{
         background-color:green;
@@ -53,6 +51,28 @@
         background-color:#007bff;
         color:white;  
     }
-    h1{
-        text-align: center;
+    .estiloG{
+        display:flex;
+        flex-direction: column;
+        width:650px;
+        height: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    
     }
+    h1{
+        font-size:40px;
+        text-align:center;
+        background: linear-gradient(445deg, #ade2fa, #98ddfd);
+        padding: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    
+    }
+img{
+    margin-right: 15px;
+	margin-top: 5px;
+	height: 80px;
+	width: 80px;
+}

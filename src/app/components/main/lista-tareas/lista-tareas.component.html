@@ -10,7 +10,7 @@
                     <div class="divLi">
                         <div class="textoli">
                             <div class="texto">
-                                {{tarea.name}} <br>Type:{{tipoTareas[tarea.type]}} <br>
+                                <p class="name">{{tarea.name}}</p> <br><p class="type">Type:{{tipoTareas[tarea.type]}}</p> <br>
                             </div>
                             <div class="Botones2">
                                 <div class="botones">
@@ -32,28 +32,6 @@
     </div>
 </div>
 
-
-<!--Parte 2 Modify-------------->
-
-<!--
-<div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content" action="/action_page.php">
-      <div class="container">
-        <h1>Modify Tarea</h1>
-        <textarea #NameTarea>{{tareas[indexmdf].name}}</textarea>
-        <select #TipoTarea>
-            <option *ngfor="let tipo of tipoTareas;let i=index;" [value]= i >{{tipo}}</option>
-        </select>
-    
-        <div class="clearfix">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <button (click)="modifyTarea(indexmdf,{name:NameTarea.value ,type:TipoTarea.value})" class="modifybtn">Delete</button>
-        </div>
-      </div>
-    </form>
-  </div>
--->
 
 
 

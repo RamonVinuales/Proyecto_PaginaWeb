@@ -1,23 +1,26 @@
 
+    <div class="estiloG">
 
 
-<h1>Manage Tipo Tarea</h1>
-<div>
-    <h2>Añadir tipo de Tarea</h2>
-    <div class="Textos">
+        <h1>Manage Tipo Tarea</h1>
+        <div class="espacio1">
+            <h2>Añadir tipo de Tarea</h2>
+            <div class="Textos">
 
-            <textarea #TypeName placeholder="Name" class="Nombre"></textarea>
+                    <textarea #TypeName placeholder="Name" class="Nombre"></textarea>
 
-            <textarea #UrlIcono placeholder="Url Imagen Icono" class="Nombre"></textarea>
+                    <textarea #UrlIcono placeholder="Url Imagen Icono" class="Nombre"></textarea>
+            </div>
+            <div class="Boton">
+                <button (click)="addTipo(TypeName.value,UrlIcono.value)" class="botonVerde">Add Tarea</button>
+            </div>
+        </div>
+
+        <div class="espacio2" style="margin-top:50px;">
+            <h2>Eliminar tipo de tarea</h2>
+            <ul class="lista">
+                <li *ngFor="let tipo of tipoTareas; let i=index">{{tipo}}<button (click)="deleteTipo(i)"class="boton">Eliminar</button></li>
+            </ul>
+        </div>
     </div>
-    <div class="Boton">
-        <button (click)="addTipo(TypeName.value,UrlIcono.value)" class="botonVerde">Add Tarea</button>
-    </div>
-</div>
-<div>
-    <h2>Eliminar tipo de tarea</h2>
-    <ul>
-        <li *ngFor="let tipo of tipoTareas; let i=index">{{tipo}}<button (click)="deleteTipo(i)"class="boton">Eliminar</button></li>
-    </ul>
-</div>
 
