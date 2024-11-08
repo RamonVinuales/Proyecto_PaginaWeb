@@ -77,7 +77,6 @@ export class TareasService {
               this.tareas[i].type--;
           }
         }
-        this.tipoTareas.splice(index,1);
       }
       this.tipoTareas.splice(index,1);
       this.iconos.splice(index,1);

@@ -14,16 +14,18 @@
     font-size: 16px;
 }
 .descripcion{
-    width:50%;
+    width:80%;
+    max-height: 100%;
     margin-top: 30px;
     font-size: 16px;
-    resize: none;
-    height: 350px;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 .descripcionContainer{
     display:flex;
     justify-content: center;
+    resize: none;
+    max-height: 40%;
+
 }
 .contenedor{
     width: 100%;

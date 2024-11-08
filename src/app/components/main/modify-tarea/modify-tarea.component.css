@@ -19,7 +19,7 @@
         
     }
     .descripcionContainer{
-        height: 40%;
+        height:40%;
         display:flex;
         justify-content: center;
     }
@@ -60,6 +60,9 @@
         background-color: white;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     
+    }
+    .contenedor{
+        height: 100%;
     }
     h1{
         font-size:40px;
