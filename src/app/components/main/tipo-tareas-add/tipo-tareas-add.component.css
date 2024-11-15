@@ -21,23 +21,17 @@
         display:flex;
         justify-content: center;
     }
-    .Flextareas{
-        display: flex;
-       flex-direction: column;
-       width: 48%;
-    }
     .Tipo{
         width:35%;
         margin-right: 5%;
         resize: none;
-    
     }
     .estiloG{
         display:flex;
+        height: 100%;
+        width:650px;
         flex-direction: column;
         justify-content: space-around;
-        width:650px;
-        height: 95%;
         margin: 0 auto;
         background-color: white;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -60,16 +54,16 @@
         color:white;  
     }
     .lista{
-        height: 60%;
+        height: 65%;
         overflow-y: auto;
     }
     .espacio1{
         height: 40%;
-        resize: none;
     }
     .espacio2{
-        height: 60%;
-        resize: none;
+        margin-top:20px;
+        height: 70%;
+        max-height: 70%;
     }
 
     h1{

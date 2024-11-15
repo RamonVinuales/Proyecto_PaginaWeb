@@ -1,7 +1,5 @@
 
     <div class="estiloG">
-
-
         <h1>Manage Tipo Tarea</h1>
         <div class="espacio1">
             <h2>Añadir tipo de Tarea</h2>
@@ -16,7 +14,7 @@
             </div>
         </div>
 
-        <div class="espacio2" style="margin-top:50px;">
+        <div class="espacio2">
             <h2>Eliminar tipo de tarea</h2>
             <ul class="lista">
                 <li *ngFor="let tipo of tipoTareas; let i=index">{{tipo}}<button (click)="deleteTipo(i)"class="boton">Eliminar</button></li>
