@@ -5,15 +5,24 @@ import { TareasAddComponent } from "./components/main/tareas-add/tareas-add.comp
 import { HeaderComponent } from "./components/header/header.component";
 import { MainComponent } from "./components/main/main.component";
 import { FooterComponent } from "./components/footer/footer/footer.component";
-
+import { InicioSesionComponent } from './components/main/inicio-sesion/inicio-sesion.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ListaTareasComponent, TareasAddComponent, RouterLink, HeaderComponent, MainComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    RouterLink,  // Para poder usar enlaces de RouterLink
+    ListaTareasComponent,
+    TareasAddComponent,
+    HeaderComponent,
+    MainComponent,
+    FooterComponent,
+    InicioSesionComponent  // Añadir el componente de login
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Proyecto_Ramon';

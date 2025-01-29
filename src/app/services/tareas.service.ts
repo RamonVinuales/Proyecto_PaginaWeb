@@ -1,124 +1,112 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+interface Payload {
+  id?: number;          // ID de la tarea (opcional, puede ser null si no se proporciona)
+  titulo?: string;      // Título de la tarea         
+  nombre?: string;      // Nombre de la tarea
+  descripcion?: string;       // Descripción de la tarea
+  tipo?: number;     // Relación con 'tipoTareas'
+  listatareas?:number;
+  url?: string;         // URL asociada con la tarea
+  familia_id?: number;
+  familia?: number;
+  usuario?:number;
+  comentarios?:string;
+  email?:string;
+  contrasenya?:string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareasService {
+  mdfyIndx=0;
+  detallesIndx=0;
+  usuarioIndx=0;
+  familiaId=0;  
 
-  private storageKey = "tareas" ;
-  private storageKeyTypes = "Types" ; 
-  private storageKeyIcons ="icons";
-  private storatgeKeyDescriptions="Descriptions";
-  constructor(){
-
-    if(this.isLocalStoratgeAvaible()){
-      const savedTareas = localStorage.getItem(this.storageKey)
-      const savedTypes = localStorage.getItem(this.storageKeyTypes)
-      const savedIcons = localStorage.getItem(this.storageKeyIcons)
-      const saveDescripciones = localStorage.getItem(this.storatgeKeyDescriptions)
-      if(savedTareas){
-        this.tareas = JSON.parse(savedTareas)
-      }
-      if(savedTypes){
-        this.tipoTareas = JSON.parse(savedTypes)
-      }
-      if(savedIcons){
-        this.iconos = JSON.parse(savedIcons)
-      }
-      if(saveDescripciones){
-        this.descripciones=JSON.parse(saveDescripciones)
-      }
-    }
+  private baseUrl = 'http://192.168.0.111:80/api/ramon/Api.php';
+  indexdetalles: number = 0;
+  constructor(private http: HttpClient) { }
+  setFamiliaId(Id:number){
+    this.familiaId=Id;
   }
-  tareas:{name:string,type:number}[]=[];
-  iconos:string[]=[];
-  tipoTareas:string[] =[];
-  descripciones:string[]=[];
-  indiceAModificar:number=0;
-  detalles:number=0;
+  setIndexDetalles(newIndex: number): void {
+    this.indexdetalles = newIndex;
+  }
+  setModify(index:number){
+    this.mdfyIndx=index;
+  }
+  setDetalles(index:number){
+    this.detallesIndx=index;
+  }
+  setUsuario(index:number){
+    this.usuarioIndx=index;
+  }
+  getIndexDetalles(): number {
+    return this.indexdetalles;
+  }
+  getFamiliaId(){
+    return this.familiaId;
+  }
+  getModify(){
+    return this.mdfyIndx;
+  }
+  
+  getDetalles(){
+    return this.detallesIndx;
+  }
+  
+  getUsuario(){
+    return this.usuarioIndx;
+  }
+  
 
-    getDescripcion(){
-      return this.descripciones
-    }
-    setModify(newIndice:number){
-      this.indiceAModificar=newIndice;
-    }
-    setDetalles(newIndice:number){
-      this.detalles=newIndice;
-    }
-    getModify(){
-      return this.indiceAModificar;
-    }
-    getTareas(){
-      return this.tareas;
-    }
-    getTypos(){
-      return this.tipoTareas;
+  // Función para insertar datos (POST)
+  insertarDatos(datos: Payload, table: string): Observable<any> {
+    const url = `${this.baseUrl}?table=${table}`;
+    return this.http.post(url, datos).pipe(
+      catchError(this.handleError)
+    );
+  }
 
-    }
-    getIconos(){
-      return this.iconos;
-    }
-    getDetalles(){
-      return this.detalles;
-    }
-    addTipo(tipo:string, icono:string){
-      this.tipoTareas.push(tipo);
-      this.iconos.push(icono);
-      this.saveToLocalStoratgeIconos();
-      this.saveToLocalStoratgeTipos();
-    }
-    deleteTipo(index:number){
-      for(let i=0;i<this.tareas.length;i++){
-        if(this.tareas[i].type == index){
-          this.tareas.splice(i,1);
-        }else{
-          if(this.tareas[i].type > index){
-              this.tareas[i].type--;
-          }
-        }
-      }
-      this.tipoTareas.splice(index,1);
-      this.iconos.splice(index,1);
-      this.saveToLocalStoratgeIconos();
-      this.saveToLocalStoratgeTipos();
-    }
-    addTarea(tarea :{name:string, type:number},descripcion:string){
-      this.tareas.push(tarea);
-      this.descripciones.push(descripcion);
-      this.saveToLocalStoratgeTareas();
-      this.saveToLocalStoratgeDescripcion();
-    }
-    modifyTarea(index:number, newTarea :{name:string, type:number},descripcion:string){
-      this.tareas[index]= newTarea;
-      this.descripciones[index]=descripcion;
-      this.saveToLocalStoratgeTareas();
-      this.saveToLocalStoratgeDescripcion();
-    }
-    deleteTarea(index:number){
-      this.tareas.splice(index,1);
-      this.descripciones.splice(index,1);
-      this.saveToLocalStoratgeTareas();
-      this.saveToLocalStoratgeDescripcion();
-    }
-    private saveToLocalStoratgeDescripcion(){
-        localStorage.setItem(this.storageKey,JSON.stringify(this.descripciones))
-    }
-    private saveToLocalStoratgeTareas(){
-      localStorage.setItem(this.storageKey, JSON.stringify(this.tareas));;  
-    }
-    private saveToLocalStoratgeIconos(){
-      localStorage.setItem(this.storageKeyIcons, JSON.stringify(this.iconos));
-    }
-    private saveToLocalStoratgeTipos(){
-      localStorage.setItem(this.storageKeyTypes, JSON.stringify(this.tipoTareas));
-    }
+  // Función para eliminar datos (DELETE)
+  eliminarDatos(id: number | string, table: string): Observable<any> {
+    const url = `${this.baseUrl}?table=${table}&id=${id}`;
+    return this.http.delete(url).pipe(
+      catchError(this.handleError)
+    );
+  }
 
-    private isLocalStoratgeAvaible():boolean{
-      try {
-        return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
-      } catch (e) {
-        return false;
-      }
+  // Función para actualizar datos (PUT)
+  updateDatos(payload: Payload, table: string): Observable<any> {
+    const url = `${this.baseUrl}?table=${table}&id=${payload['id']}`;
+    return this.http.put(url, payload).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Función para obtener datos (GET)
+  getDatos(table: string): Observable<any> {
+    const url = `${this.baseUrl}?table=${table}`;
+    return this.http.get(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Manejo de errores comunes
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Error de red:', error.error.message);
+    } else {
+      console.error(
+        `Código de error: ${error.status}, ` +
+        `Mensaje: ${error.message}`
+      );
     }
+    return throwError('Algo salió mal. Por favor, intenta nuevamente más tarde.');
+  }
 }

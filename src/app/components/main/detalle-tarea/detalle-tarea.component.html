@@ -2,13 +2,10 @@
     <div class="estiloG">
         <h1>Detalles de la Tarea</h1>
         <div class="Textos">
-            <p class="Nombre"readonly>Nombre: {{tareas[indexdtl].name}}</p>
+            <p class="Nombre"readonly>Nombre: {{tareaActual.nombre}}</p>
             <div class="ContainerTipo">
-                <p class="Tipo">Tipo: {{tipoTareas[tareas[indexdtl].type]}}</p>
-                <img [src]="iconos[tareas[indexdtl].type]">
+                <p class="Tipo">Tipo: {{tipoTareas[tareaActual.listatareas].nombre}}</p>
+                <img [src]="tipoTareas[tareaActual.listatareas].url">
             </div>
-        </div>
-        <div class="descripcionContainer"> 
-            <p class="descripcion">Descripción:<br> {{descripciones[indexdtl]}}</p>
         </div>
     </div>

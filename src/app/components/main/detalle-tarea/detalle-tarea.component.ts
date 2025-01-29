@@ -12,16 +12,30 @@ import { CommonModule } from '@angular/common';
 })
 export class DetalleTareaComponent implements OnInit {
   constructor(private tareasService : TareasService, private router: Router){}
-  tareas:{name:string,type:number} []=[];
-  iconos:string[]=[];
-  descripciones:string[]=[];
-  tipoTareas:string[]=[];
-  indexdtl:number=-1;
+  tipoTareas: { id: number, nombre: string, url: string, familia_id:number }[] = [];
+  tareas:{id:number, nombre: string, tipo:number, listatareas:number}[]=[];
+  tareaActual:{id?:number, nombre?: string, tipo?:number, listatareas:number}={listatareas:0};
+  detallesIndx:number=-1;
+
   ngOnInit(): void {
-    this.tareas = this.tareasService.getTareas();
-    this.iconos = this.tareasService.getIconos();
-    this.descripciones = this.tareasService.getDescripcion();
-    this.tipoTareas = this.tareasService.getTypos();
-    this.indexdtl = this.tareasService.getDetalles();
+    this.tareasService.getDatos("tipoTareas").subscribe({
+      next: (datos) => {
+        this.tipoTareas = Object.values(datos);
+      },
+      error: (err) => {
+        console.error('Error al obtener datos:', err);
+      }
+    });
+    this.tareasService.getDatos("tareas").subscribe({
+      next: (datos) => {
+        this.tareas = Object.values(datos);
+      },
+      error: (err) => {
+        console.error('Error al obtener datos:', err);
+      }
+    }); 
+    this.detallesIndx=this.tareasService.getDetalles();
+    this.tareaActual=this.tareas[this.detallesIndx];
+
   }
 }

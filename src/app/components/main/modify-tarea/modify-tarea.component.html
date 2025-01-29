@@ -3,18 +3,14 @@
     <div class="estiloG">
         <h1>Modify Tareas</h1>
         <div class="Textos">
-                <textarea #tareaName placeholder="Name" class="Nombre" [value]="tareas[indexmdf].name"></textarea>
+                <textarea #tareaName placeholder="Name" class="Nombre" [value]="tareaActual['nombre']"></textarea>
 
                 <select #tareaType class="Tipo" >
-                    <option  *ngFor="let tipo of tipoTareas; let i=index;" [value]=i [selected]="i===tareas[indexmdf].type">{{tipo}}</option>
+                    <option  *ngFor="let tipo of tipoTareas; let i=index;" [value]=i [selected]="i===tareaActual['tipo']">{{tipo['nombre']}}</option>
                 </select>
         </div>
-        <div class="descripcionContainer"> 
-            <textarea #tareaDescripcion placeholder="Descripcion" class="descripcion">{{descripciones[indexmdf]}}</textarea>
-
-        </div>
         <div class="Boton">
-            <button (click)="modifyTarea({name:tareaName.value,type:tareaType.value},tareaDescripcion.value)" class="botonVerde">Modify Tarea</button>
+            <button (click)="modifyTarea({name:tareaName.value,type:tareaType.value})" class="botonVerde">Modify Tarea</button>
         </div>
     </div>
 </div>

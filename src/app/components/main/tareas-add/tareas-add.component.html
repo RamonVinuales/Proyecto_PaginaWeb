@@ -2,20 +2,19 @@
 
     <div class="estiloG">
         <h1>Add Tareas</h1>
-        <div class="Textos">
-
-                <textarea #tareaName placeholder="Name" class="Nombre"></textarea>
-
-                <select #tareaType class="Tipo">
-                    <option *ngFor="let tipo of tipos; let i=index" [value]=i>{{tipo}}</option>
+        <form [formGroup]="form" (submit)="send()">
+            <div class="Textos">
+                <input id=tareaName formControlName="nombreTarea" placeholder="Name" class="Nombre">
+                <select id=tareaType class="Tipo" formControlName="tipoTarea">
+                    <option *ngFor="let tipo of tipoTareas; let i=index" [value]="tipo['id']">{{tipo['nombre']}}</option>
                 </select>
-        </div>
-        <div class="descripcionContainer"> 
-            <textarea #tareaDescripcion placeholder="Descripcion" class="descripcion"></textarea>
-
-        </div>
-        <div class="Boton">
-            <button (click)="addTarea(tareaName.value,tareaType.value,tareaDescripcion.value)" class="botonVerde">Add Tarea</button>
-        </div>
+            </div>
+            <div class="descripcionContainer"> 
+                <textarea #tareaDescripcion placeholder="Esta desabilitado lo que escrivas no se guardara" formControlName="decripcionTarea" class="descripcion"></textarea>
+            </div>
+            <div class="Boton">
+                <button [disabled]="form.invalid" class="botonVerde">Add Tarea</button>
+            </div>
+        </form>
     </div>
 

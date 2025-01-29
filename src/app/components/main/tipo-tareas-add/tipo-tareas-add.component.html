@@ -3,21 +3,21 @@
         <h1>Manage Tipo Tarea</h1>
         <div class="espacio1">
             <h2>Añadir tipo de Tarea</h2>
-            <div class="Textos">
-
-                    <textarea #TypeName placeholder="Name" class="Nombre"></textarea>
-
-                    <textarea #UrlIcono placeholder="Url Imagen Icono(Solo jpg)" class="Nombre"></textarea>
-            </div>
-            <div class="Boton">
-                <button (click)="addTipo(TypeName.value,UrlIcono.value)" class="botonVerde">Add Tarea</button>
-            </div>
+            <form [formGroup]="form" (submit)="send()">
+                <div class="Textos">
+                    <input id="nombreTipo" formControlName="nombreTipo" placeholder="Name" class="Nombre">
+                    <input id="Url" formControlName="Url" placeholder="Url Imagen Icono(Solo jpg)" class="Nombre">
+                </div>
+                <div class="Boton">
+                    <button [disabled]="form.invalid" class="botonVerde">Add Tarea</button>
+                </div>
+            </form>
         </div>
 
         <div class="espacio2">
             <h2>Eliminar tipo de tarea</h2>
             <ul class="lista">
-                <li *ngFor="let tipo of tipoTareas; let i=index">{{tipo}}<button (click)="deleteTipo(i)"class="boton">Eliminar</button></li>
+                <li *ngFor="let tipo of tipoTareasActual; let i=index">{{tipo["nombre"]}}<button (click)="deleteTipo(tipo['id'])"class="boton">Eliminar</button></li>
             </ul>
         </div>
     </div>
